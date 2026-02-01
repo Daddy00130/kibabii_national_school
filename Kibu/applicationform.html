@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <title>Kibabii national school application form</title>
+    <style>
+        body{font-family: Arial, sans-serif; background-color: aliceblue;padding: 20px;}
+        header {
+                    background-color: #004a99; color: white;padding: 1rem 5%;display: flex;justify-content: space-between;align-items: center;position: sticky;top: 0;z-index: 1000;box-shadow: 0 2px 10px rgba(red, green, blue, alpha);
+                }
+                .logo-area{
+                    display: flex;align-items: center;gap: 15px;
+                }
+                .logo-area img{
+                    height: 60px;border-radius: 50px;
+                }
+                nav ul{
+                    list-style: none;display: flex;gap: 20px;
+                }
+                nav ul li a{
+                    color: white;text-decoration: none;font-weight: bold;transition: 0.3s;padding: 8px 15px;border-radius: 5px;
+                }
+                nav ul li a:hover{
+                    background: #ffcc00;color: #004a99;
+                }
+        .form-container{max-width: 600px;margin: auto;background: white;padding: 25px;border-radius: 8px;}
+        h2{text-align: center;color: black;}
+        label{font-weight: bold;display: block;margin-top: 15px;}
+        input,select{width: 100%;padding: 8px;margin-top: 5px; border: 1px solid #ccc; border-radius: 4px;box-sizing: border-box;}
+        .buttons{margin-top: 25px;display: flex;gap: 10px;}
+        .btn-submit{background-color: #28a745;color: white;border: none;padding: 12px;width: 100%;cursor: pointer;border-radius: 4px;font-weight: bold;}
+        .btn-cancel{background-color: #dc3545; color: white;border: none;padding: 12px;width: 100%;cursor: pointer;border-radius: 4px;font-weight: bold;}
+        .btn-submit:hover{background-color: #218838;}
+        .btn-cancel:hover{background-color: #c82333;}
+        footer{text-align: center;padding: 20px;background: #333333;color: white;}
+    </style>
+ </head>
+ <body>
+    <header>
+            <div class="logo-area">
+                <img src="images/logo.png">
+                <h1>KIBABII NATIONAL SCHOOL</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="kibu_profile.html">Home</a></li>
+                    
+                </ul>
+            </nav>
+        </header>
+    <div class="form-container">
+        <h2 style="text-align: center;"><b>KIBABII NATIONAL SCHOOL<br> APPLICATION FORM</b></h2>
+        <form action="submit.php" method="post" enctype="multipart/form-data">
+            <label>KCPE Index:</label>
+            <input type="text" id="indexNo" name="kcpe_index" required>
+            <label>Student Full Name:</label>
+            <input type="text" id="fullname" name="student_name" placeholder="Enter your full name" required>
+
+            <label>Date Of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+            <label>Home county:</label>
+            <select id="county" name="home_county" required>
+                <option value="">-- select county --</option>
+                <option value="Bungoma">Bungoma</option>
+                <option value="Busia">Busia</option>
+                <option value="Kakamega">Kakamega</option>
+                <option value="Vihiga">Vihiga</option>
+                <option value="Tranzoia">Tranzoia</option>
+                <option value="Kisumu">Kisumu</option>
+                <option value="Nakuru">Nakuru</option>
+                <option value="Nairobi">Nairobi</option>
+                <option value="Kericho">Kericho</option>
+                <option value="Kisii">Kisii</option>
+                <option value="Mombasa">Mombasa</option>
+                <option value="Homabay">Homabay</option>
+            </select>
+            <label>KCPE Year:</label>
+            <input type="number" id="kcpeyear" min="2020" max="2026" name="kcpe_year" required>
+
+            <label>Marks scored:</label>
+            <input type="number" id="marks" min="0" max="500" name="marks_scored" required>
+            <label>Pathway of study:</label>
+            <select id="Pathway" name="patway_of_study" required>
+                <option value="">-- select pathway --</option>
+                <option value="STEM">STEM</option>
+                <option value="SPORTS">SPORTS</option>
+                <option value="SOCIAL SCIENCE">SOCIAL SCIENCE</option>
+            </select>
+            <label>Former Primary School:</label>
+            <input type="text" id="Primary" name="primary_school" required>
+            <label>Parent Name:</label>
+            <input type="text" id="Parent" name="parent_name" required>
+            <label>Parent Phone Number:</label>
+            <input type="tel" id="Phone" name="phone" required>
+            <label>Address:</label>
+            <input type="text" id="address" name="addresss" required>
+            <label>Upload Birth certificate:</label>
+            <input type="file" id="birth_cert" name="birth_cert" required>
+            <label>Upload Results Slip:</label>
+            <input type="file" id="results_slip" name="results_slip" required>
+            <div class="buttons">
+                <button type="submit" class="btn-submit">Submit Application</button>
+                <button type="button" class="btn-cancel" onclick="cancelApplication()">Cancel application</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        const form=document.getElementById('admissionForm');
+        form.addEventListener('submit',function(event){
+            event.preventDefault();
+            const inputs=form.querySelectorAll('input,select');
+            let allFilled= true;
+            inputs.forEach(input=>{
+                if(!input.value){
+                    allFilled=false;
+                }
+            });
+            if(allFilled){
+                alert("Application successfull wait for the response \n from the administration ");
+               // form.reset();
+            }
+            else{
+                alert("Ensure all fields are filled up!\n before submission")
+            }
+        });
+        function cancelApplication(){
+            const confirmQuit=confirm("Are you sure you want to quit application?");
+            if(confirmQuit){
+                alert("Thank you for reaching for reaching to kibabii highschool website.");
+                form.reset();
+            }
+        }
+    </script>
+    <footer style="text-align: center;padding: 20px;font-size: 0.8rem;color: #888;">
+            <p>$copy; 2026 kibabii national school. All rights Reserved.</p>
+        </footer>
+ </body>
+</html>
